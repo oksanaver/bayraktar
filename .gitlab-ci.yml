@@ -1,0 +1,26 @@
+image: node:latest
+
+stages:
+  - Lint
+  - Build
+  - Test
+
+Lint:
+  stage: Lint
+  script:
+    - npm install --legacy-peer-deps
+    - npx eslint ./src
+  when: manual
+
+Build:
+  stage: Build
+  script:
+    - npm install --legacy-peer-deps
+    - npm run build
+  when: manual
+
+Unit Tests:
+  stage: Test
+  script:
+    echo "Unit-testing has been started..."
+  when: manual
